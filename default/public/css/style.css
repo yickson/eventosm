@@ -3451,13 +3451,13 @@ ul.pagination .active a {
 
 .section-ajenda .session {
     padding       : 15px 0;
-    border-left   : 1px solid #df0020;
+    border-left   : 2px solid #df0020;
     margin-bottom : 40px;
     }
 
 .section-ajenda .session time {
     padding       : 5px 25px 15px;
-    border-bottom : 1px solid #df0020;
+    border-bottom : 2px solid #df0020;
     display       : inline-block;
     }
 
@@ -3467,8 +3467,7 @@ ul.pagination .active a {
 
 .section-ajenda .session h3 {
     margin         : 20px 0 20px 20px;
-    font-size      : 20px;
-    text-transform : uppercase;
+    font-size      : 16px;
     }
 
 .section-ajenda .session h3 span {

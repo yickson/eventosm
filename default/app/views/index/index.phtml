@@ -13,7 +13,8 @@
 					<h3>2018</h3>
 					<h6>19-04 Abril 2018 Santiago</h6>
 					<!-- Action Button -->
-					<a href="#" class="btn btn-main-md">Obtén tu entrada ahora</a>
+					<?php echo Html::link('inscripcion', 'Obtén tu invitación ahora', 'class="btn btn-main-md"') ?>
+					
 				</div>
 			</div>
 		</div>
@@ -31,7 +32,7 @@
 		<div class="row">
 			<div class="col-lg-5 col-md-6 align-self-center">
 				<div class="image-block two bg-about">
-					<img class="img-fluid" src="/images/speakers/featured-speaker-two.jpg" alt="">
+					<img class="img-fluid" src="/eventosm/images/speakers/featured-speaker-two.jpg" alt="">
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6 align-self-center ml-lg-auto">
@@ -124,20 +125,20 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="session">
-                        <time>8:30AM</time>
+                        <time><b>8:30</b></time>
                         <h3><i>Acreditación</i></h3>
                     </div>
                     <!-- .session -->
 
                     <div class="session">
-                        <time>9:00 - 9:15</time>
+                        <time><b>9:00 - 9:15</b></time>
                         <h3><i>Palabras de bienvenida</i></h3>
                         <h3>Francisco Tepper <span>DIRECTOR GENERAL DE SM</span></h3>
                     </div>
                     <!-- .session -->
 
                     <div class="session">
-                        <time>9:00 - 10:00</time>
+                        <time><b>9:00 - 10:00</b></time>
                         <h3><i>Introducción</i></h3>
                         <h3>Los Indicadores de Desarrollo Personal y Social (IDPS) como desafío a las Instituciones Educativas.</h3>
                         <h3>Isidora Mena Edwards <span>DOCTORA EN CIENCIAS DE LA EDUCACIÓN</span></h3>
@@ -148,7 +149,7 @@
                 <div class="col-md-4">
 
                     <div class="session">
-                        <time>10:00 - 11:00</time>
+                        <time><b>10:00 - 11:00</b></time>
                         <h3><i>Conferencia</i></h3>
                         <h3>Climas sociales tóxicos y nutritivos en el contexto escolar.</h3>
                         <h3>Ana María Arón Svigilsky <span>DOCTORA EN CIENCIAS DE LA EDUCACIÓN</span></h3>
@@ -156,7 +157,7 @@
                     <!-- .session -->
 
                     <div class="session">
-                        <time>11:00 - 11:30</time>
+                        <time><b>11:00 - 11:30</b></time>
                         <h3><i>Coffee Break</i></h3>
                     </div>
                     <!-- .session -->
@@ -167,14 +168,14 @@
                 </div>
                 <div class="col-md-4">
                   <div class="session">
-                      <time>11:30 - 13:00</time>
+                      <time><b>11:30 - 13:00</b></time>
                       <h3><i>Mesa redonda</i></h3>
                       <h3>Importancia del aprendizaje socioemocional en la gestión del clima social (basados en las investigaciones de la colección Somos Maestros).</h3>
                       <ul>
-                        <h3>Clima social</h3>
-                        <h3>Relación familia</h3>
-                        <h3>Resolución</h3>
-                        <h3>Inclusión educativa</h3>
+                        <li><h3>Clima social</h3></li>
+                        <li><h3>Relación familia</h3></li>
+                        <li><h3>Resolución</h3></li>
+                        <li><h3>Inclusión educativa</h3></li>
                       </ul>
                       <h3>Neva Milicic Müller <span>PSICÓLOGA ESPECIALISTA EN EDUCACIÓN</span></h3>
                       <h3>Isidora Mena Edwards <span>PSICÓLOGA ESPECIALISTA EN EDUCACIÓN</span></h3>
@@ -241,7 +242,7 @@
 							<!-- Service item -->
 							<div class="service-item">
 								<i class="fa fa-calendar"></i>
-								<h5>Evento completo</h5>
+								<h5>Evento Gratis</h5>
 							</div>
 						</div>
 					</div>
@@ -271,7 +272,7 @@
 =            Pricing Table            =
 ====================================-->
 
-<section class="section pricing two">
+<!--  <section class="section pricing two">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
@@ -286,20 +287,20 @@
 
 			</div>
 			<div class="col-lg-4 col-md-6">
-				<!-- Pricing Item -->
+				<!-- Pricing Item 
 				<div class="pricing-item featured">
 					<div class="pricing-heading text-center">
-						<!-- Title -->
+						<!-- Title 
 						<div class="title">
 							<h6>Estandar</h6>
 						</div>
-						<!-- Price -->
+						<!-- Price 
 						<div class="price">
 							<h2>Gratuito</h2>
 						</div>
 					</div>
 					<div class="pricing-body">
-						<?php echo $config->cupos ?>
+						<?php //echo $config->cupos ?>
 
 					</div>
 					<div class="pricing-footer text-center">
@@ -312,7 +313,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section>-->
 
 <!--====  End of Pricing Table  ====-->
 
@@ -324,6 +325,12 @@
 	<!-- Google Map -->
 	<div id="mapa"></div>
   <div class="row">
+  	  <div class="col-12">
+  	  	<div class="section-title">
+  	  		<h3><span class="alternate">Dirección</span></h3>
+    		<h3>Fundación Telefónica - Av. Providencia 127, Providencia, Santiago</h3>
+  	  	</div>
+  	  </div>
       <div class="col-md-12">
           <div id="map" class="googleMap"></div>
       </div>
