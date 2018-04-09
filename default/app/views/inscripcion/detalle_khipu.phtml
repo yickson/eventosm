@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <div class="card text-white bg-info mb-3" style="max-width: 100%">
+      <div class="card-header"><b>Detalle de la compra</b></div>
+      <div class="card-body">
+
+        <p>Orden de compra: <b><?php echo $comprapay->orden_compra ?></b></p>
+        <p>Fecha de la compra: <b><?php echo $comprapay->fecha ?></b></p>
+        <p>Monto de pago: <b><?php echo $comprapay->monto ?></b></p>
+        <p>
+          Válida la entrada:
+          <?php if($usuario->cantidad > 1): ?>
+            <b><?php echo $usuario->cantidad.' personas' ?><b>
+          <?php else: ?>
+            <b><?php echo $usuario->cantidad.' persona' ?></b>
+          <?php endif ?>
+        </p>
+        <p><i>Este detalle será enviado a su correo.</i></p>
+        <?php echo Html::link('', 'Ir al inicio', 'class="btn btn-success"') ?>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>

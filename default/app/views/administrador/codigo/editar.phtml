@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <div class="box box-primary">
+      <div class="box-header">
+        <i class="fa fa-users hidden"></i>
+        <h3 class="box-title"> Configuración general </h3>
+        <br><p>
+          <?php echo Html::link('administrador/codigo/', '<i class="fa fa-cog pull-left"> Volver a la vista principal </i>', 'class="btn btn-success"') ?>
+        <br>
+        <hr>
+        <input id="indice" type="text" class="form-control" value="<?php echo $codigo->indice ?>">
+        <br>
+        <button id="editar" class="btn btn-success">Editar índice</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#editar").click(function(){
+      var indice = $("#indice").val();
+
+      $.ajax({
+        type: 'POST',
+        cache: false,
+        url: 'editar_codigo',
+        data: {"indice":indice},
+        success: function(result){
+          if (result === 1) {
+            swal({
+                  type: 'success',
+                  title: 'Edición correcta',
+                  text: 'Ya lo estamos redirigiendo...',
+                  timer: 3000,
+                  onOpen: () => {
+                    swal.showLoading()
+                  }
+                }).then((result) => {
+                  if (result.dismiss === 'timer') {
+                    window.location.href = "<?php echo PUBLIC_PATH.'administrador/codigo/' ?>";
+                  }
+                });
+          }else{
+            swal(
+                  'Error al editar',
+                  'No se pudieron editar los datos, vuelva a intentar',
+                  'error'
+                );
+          }
+        }
+      })
+    })
+  })
+</script>

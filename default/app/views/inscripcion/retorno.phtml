@@ -1,0 +1,26 @@
+<?php if($errorpay): ?>
+<?php View::content() ?>
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Error</strong> en la transacción con Transbank por las siguientes razones:
+    <ul>
+      <li>Cupo superado</li>
+      <li>Rechazo de transacción por la entidad bancaria</li>
+    </ul>
+    <?php echo Html::link('#', 'Inicio de plataforma', 'class="btn btn-success"') ?>
+  </div>
+<?php else: ?>
+  <?php View::content() ?>
+    <form name="webpay" action="<?=$result->urlRedirection?>" method="post">
+      <input type="text" name="token_ws" value="<?=$token?>" style="display:none"/>
+      <input id="regreso" type="submit" value="WP"  />
+    </form>
+    <pre>
+    	<?php print_r($result) ?>
+    </pre>
+   <script>
+      window.onload = function(){
+	     //document.webpay.submit();
+      }
+  </script>
+<?php endif ?>

@@ -1,0 +1,68 @@
+<section class="section about invitados">
+	<div class="register">
+		<div class="block">
+			<div class="title text-center">
+				<h3>Registrar a <span class="alternate">Invitados</span></h3>
+			</div>
+      <div class="container">
+        <?php echo Form::open('inscripcion/procesar_usuarios', 'POST', 'id="invitados" class="row"') ?>
+          <?php for($i = 0; $i < $entradas; $i++): ?>
+  				<div class="col-md-6">
+  					<input name="nombre<?php echo $i ?>" type="text" data-validate="validate(required, minlength(4))" class="form-control main" placeholder="Nombre y Apellido">
+  				</div>
+  				<div class="col-md-6">
+  					<input name="correo<?php echo $i ?>" type="email" data-validate="validate(required, email)" class="form-control main" placeholder="correo@gmail.com">
+  				</div>
+  				<div class="col-md-6">
+  					<input name="telefono<?php echo $i ?>" type="number" data-validate="validate(required, number, minlength(9))" class="form-control main" placeholder="Telefono">
+  				</div>
+  				<div class="col-md-6">
+  					<div class="form-group">
+              <select id="cargo" name="cargo<?php echo $i ?>" class="cargo main" selectize>
+                <option value="" disabled selected >Seleccione...</option>
+                <?php foreach($cargo as $key => $valor): ?>
+                  <option value="<?php echo $valor->id ?>"><?php echo $valor->nombre ?></option>
+                <?php endforeach ?>
+              </select>
+  					</div>
+  				</div>
+          <hr>
+          <?php endfor ?>
+  				<div class="col-12 text-center">
+  					<button type="submit" class="btn btn-main-md">Continuar</button>
+  				</div>
+  			</form>
+      </div>
+		</div>
+	</div>
+</section>
+<br>
+<?php echo Tag::js("selectize/js/standalone/selectize");?>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#invitados').ketchup();
+    $('#boton').click(function(){
+      var cargo = $('.cargo').val();
+      console.log(cargo);
+      if(cargo === '' || cargo === undefined){
+          swal(
+            'Debe selecccionar un cargo',
+            'También puede ingresar un cargo que no esté en la lista',
+            'info'
+          )
+          return;
+      }else{
+        $("#invitados").submit();
+      }
+    });
+    $('.cargo').selectize({
+      create: true,
+      render: {
+        option_create: function(data, escape) {
+          var addString = 'Agregar';
+          return '<div class="create">' + addString + ' <strong>' + escape(data.input) + '</strong>&hellip;</div>';
+        }
+      }
+    });
+  })
+</script>

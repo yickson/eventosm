@@ -1,0 +1,40 @@
+<!--========================================
+=            Navigation Section            =
+=========================================-->
+<?php $asientos = (New Configuracion)->find(1)->cupos ?>
+<nav class="navbar main-nav border-less fixed-top navbar-expand-lg p-0">
+  <div class="container-fluid p-0">
+      <!-- logo -->
+      <a class="navbar-brand" href="index.html">
+        <img src="/eventosm/images/logo.png" alt="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fa fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" href=""  data-toggle="dropdown">Inicio
+            <span>/</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown dropdown-slide">
+          <a class="nav-link" href="expositoras">Expositoras
+            <span>/</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown dropdown-slide">
+          <a class="nav-link" href="#"><i class="fa fa-users"></i> <?php echo $asientos  ?> Asientos
+            <span>/</span>
+          </a>
+        </li>
+      </ul>
+      <a href="#" class="ticket">
+        <img src="/eventosm/images/icon/ticket.png" alt="ticket">
+        <span>Adquirir Entrada</span>
+      </a>
+      </div>
+  </div>
+</nav>
+
+<!--====  End of Navigation Section  ====-->

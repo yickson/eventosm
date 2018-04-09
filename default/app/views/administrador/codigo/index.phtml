@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <div class="box box-primary">
+      <div class="box-header">
+        <i class="fa fa-users hidden"></i>
+        <h3 class="box-title"> Configuración general </h3>
+        <br><p>
+          <?php echo Html::link('administrador/codigo/editar', '<i class="fa fa-cog pull-left"> Editar configuración </i>', 'class="btn btn-success"') ?>
+        <br>
+        <hr>
+        <p>Indice del evento: <b><?php echo $codigo->indice ?></b></p>
+        <h3 class="text-center">Función</h3>
+        <p>
+          Este módulo sirve para personalizar el índice con que comienza la orden de compra, es decir
+          si el índice del evento dice: SM, esto indica que todas las ordenes de compra saldrán con el
+          formato 'SM123456789' si lo cambiamos a ATE serán escritas de la siguiente forma: 'ATE123456789'.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>

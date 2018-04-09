@@ -1,0 +1,30 @@
+<br>
+<section class="section schedule">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="section-title">
+					<h3>EventoSM <span class="alternate">Convivencia Escolar</span></h3>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+			<p>Orden de compra: <b><?php echo $comprapay->numero_compra ?></b></p>
+            <p>Fecha de la compra: <b><?php echo $comprapay->fecha ?></b></p>
+            <p>Monto de pago: <b><?php echo '$'. number_format($comprapay->monto, 0, '', '.') ?></b></p>
+            <p>
+              Válida la entrada:
+              <?php if($usuario['entradas'] > 1): ?>
+                <b><?php echo $usuario['entradas'].' personas' ?></b>
+              <?php else: ?>
+                <b><?php echo $usuario['entradas'].' persona' ?></b>
+              <?php endif ?>
+            </p>
+            <p><i>Este detalle será enviado a su correo.</i></p>
+        <?php echo Html::link('', 'Ir al inicio', 'class="btn btn-main-md"') ?>
+			</div>
+
+		</div>
+	</div>
+</section>

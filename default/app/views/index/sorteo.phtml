@@ -1,0 +1,95 @@
+<section class="section schedule">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="section-title">
+					<h3>Participantes del sorteo - EventoSM</h3>
+          <button type="button" class="btn btn-main-md sorteo">Iniciar Sorteo</button>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+              </tr>
+            </thead>
+            <?php foreach($usuarios as $key => $valor): ?>
+              <tr>
+                <td><?php echo $valor->nombre ?></td>
+                <td><?php echo $valor->correo ?></td>
+                <td><?php echo $valor->telefono ?></td>
+              </tr>
+            <?php endforeach ?>
+          </table>
+        </div>
+        <?php echo Html::link('', 'Volver al inicio', 'class="btn btn-main-md"') ?>
+			</div>
+		</div>
+	</div>
+</section>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.sorteo').click(function(){
+      swal({
+        title: '¿Estas seguro de iniciar el sorteo?',
+        text: 'Si deseas continuar presiona OK',
+
+        showCancelButton: true,
+        confirmButtonText: 'Si, iniciar',
+        cancelButtonText: 'Cancelar',
+        imageUrl: '../images/nyan-cat.gif',
+        imageWidth: 256,
+        imageHeight: 256,
+        imageAlt: 'Sorteo',
+        animation: false
+      }).then((result) => {
+        //console.log(result);
+        if (result.value) {
+          $.ajax({
+            type: 'GET',
+            cache: false,
+            url: 'sorteo_usuario',
+            success: function(dato){
+              console.log(dato);
+              if(dato.nombre !== undefined){
+                swal({
+                      type: 'question',
+                      title: 'Procesando datos',
+                      text: 'Quién será el afortunado...',
+                      timer: 5000,
+                      onOpen: () => {
+                        swal.showLoading()
+                      }
+                    }).then((result) => {
+                      if (result.dismiss === 'timer') {
+                        swal({
+                          title: '¡Ganador(a)!',
+                          text: 'Nombre: '+dato.nombre+' Telefono: '+dato.telefono,
+                          imageUrl: '../images/premio.gif',
+                          imageWidth: 200,
+                          imageHeight: 150,
+                          imageAlt: 'Premio',
+                          animation: false
+                        })
+                      }
+                    });
+              }
+            }
+          })
+        } else if (result.dismiss === 'cancel') {
+          swal(
+            'Cancelado',
+            'No has iniciado el sorteo',
+            'info'
+          )
+        }
+      });
+    })
+  })
+</script>

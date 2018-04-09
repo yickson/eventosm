@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-danger">
+      <div class="box-header">
+        <i class="fa fa-users hidden"></i>
+        <h3 class="box-title"> Editar conferencistas </h3>
+        <div class="box-body">
+          <?php View::content() ?>
+          <?php echo Form::openMultipart() ?>
+            <input name="id" id="usuario" type="hidden" value="<?php echo $usuario->id ?>">
+            <h4>Nombre</h4>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user" style="color:red"></i></span>
+              <input name="nombre" id="nombre" type="text" class="form-control" placeholder="Ingrese nombre del usuario" value="<?php echo $usuario->nombre ?>">
+            </div>
+            <br>
+            <h4>Imagen de perfil</h4>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-file" style="color:red"></i></span>
+              <input type="file" name="imagen" class="form-control">
+            </div>
+            <br>
+            <h4>Descripción</h4>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-list" style="color:red"></i></span>
+              <textarea name="descripcion" id="descripcion" class="form-control" rows="8" cols="80"><?php echo $usuario->contenido ?></textarea>
+            </div>
+            <br>
+            <input type="submit" name="enviar" class="btn btn-success" value="Editar conferencista">
+          </form>
+          <?php echo Html::img($usuario->imagen, 'Perfil', 'width="200px" height="200px" class="img-responsive img-circle"') ?>
+          <span class=" ml-1 pull-right"> &nbsp; &nbsp; </span>
+          <?php echo Html::link('administrador/conferencistas/', 'Volver', 'class="btn btn-success pull-right"') ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(".guardar").click(function(){
+  var id = $("#usuario").val();
+  var nombre = $("#nombre").val();
+  var descripcion = $("#descripcion").val();
+  $.ajax({
+    type: "POST",
+    cache: false,
+    url: "../editar_usuario",
+    data: {"id":id, "nombre":nombre, "descripcion":descripcion },
+    success: function(result){
+      if(result == 1){
+        console.log("usuario creado");
+        swal({
+           title: "Usuario editado correctamente!",
+           text: "En breves momentos serás redireccionado",
+           type: "success",
+           timer: 2500,
+           onOpen: () => {
+             swal.showLoading()
+           }
+         }).then((result) => {
+           if (result.dismiss === 'timer') {
+             window.location.href = "<?php echo PUBLIC_PATH.'administrador/conferencistas/' ?>";
+           }
+         });
+      }else{
+        console.log("error"); //Colocar el sweet alert
+        swal(
+              'Error al crear',
+              'No se pudieron crear los datos del usuario, vuelva a intentar',
+              'error'
+            );
+      }
+    }
+  });
+});
+</script>

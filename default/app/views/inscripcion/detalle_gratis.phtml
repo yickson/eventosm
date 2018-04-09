@@ -1,0 +1,35 @@
+<section class="section schedule">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="section-title">
+					<h3>Detalle de inscripción - <?php echo $colegio ?></h3>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+              </tr>
+            </thead>
+            <?php foreach($usuarios as $key => $valor): ?>
+              <tr>
+                <td><?php echo $valor['nombre'] ?></td>
+                <td><?php echo $valor['correo'] ?></td>
+                <td><?php echo $valor['telefono'] ?></td>
+              </tr>
+            <?php endforeach ?>
+          </table>
+        </div>
+        <p>Para tener registro de esta inscripción debe imprimir este documento</p>
+        <?php echo Html::link('', 'Volver al inicio', 'class="btn btn-main-md"') ?>
+			</div>
+		</div>
+	</div>
+</section>

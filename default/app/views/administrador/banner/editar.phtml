@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-danger">
+      <div class="box-header">
+        <i class="fa fa-users hidden"></i>
+        <h3 class="box-title"> Editar Banner </h3>
+        <div class="box-body">
+          <?php View::content() ?>
+          <?php echo Form::openMultipart() ?>
+            <h4>Imagen de perfil</h4>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-file" style="color:red"></i></span>
+              <input id="banner" type="file" name="banner">
+            </div>
+            <br>
+            <input type="submit" name="enviar" class="btn btn-success" value="Editar banner">
+          </form>
+          <span class=" ml-1 pull-right"> &nbsp; &nbsp; </span>
+          <?php echo Html::link('administrador/banner/', 'Volver', 'class="btn btn-success pull-right"') ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$("#banner").fileinput({
+  showUpload: false,
+  showCaption: false,
+  browseClass: "btn btn-primary",
+  fileType: "any"
+});
+</script>

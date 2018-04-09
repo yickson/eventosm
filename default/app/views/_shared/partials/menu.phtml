@@ -1,0 +1,76 @@
+<ul class="sidebar-menu" data-widget="tree">
+  <li class="header"> MENU </li>
+  <li class="">
+    <a id="menu1" href="<?php echo PUBLIC_PATH ?>administrador/">
+      <i class="fa fa-home"></i>
+      <span>Inicio</span>
+    </a>
+  </li>
+  <?php if(Session::get('id', 'administrador') == 1): ?>
+    <li class="header"> ADMINISTRADOR </li>
+    <li class="">
+      <a id="menuadmin" href="<?php echo PUBLIC_PATH ?>administrador/administrador/">
+        <i class="fa fa-user-circle"></i>
+        <span>Lista de administradores</span>
+      </a>
+    </li>
+  <?php endif ?>
+  <li class="header"> GESTIONAR EVENTO </li>
+    <li class="">
+    	<a href="<?php echo PUBLIC_PATH ?>administrador/configuracion/" id="lista">
+    	  <i class="fa fa-cog" aria-hidden="true"></i>
+        <span>Configuracion</span>
+    	</a>
+    </li>
+    <li class="">
+    	<a href="<?php echo PUBLIC_PATH ?>administrador/codigo/" id="lista">
+    	  <i class="fa fa-key" aria-hidden="true"></i>
+        <span>Indice de compra</span>
+    	</a>
+    </li>
+    <li class="">
+    	<a href="<?php echo PUBLIC_PATH ?>administrador/programa/" id="lista">
+    	  <i class="fa fa-clipboard" aria-hidden="true"></i>
+        <span>Programa</span>
+    	</a>
+    </li>
+    <li class="">
+    	<a href="<?php echo PUBLIC_PATH ?>administrador/conferencistas/" id="lista">
+    	  <i class="fa fa-users" aria-hidden="true"></i>
+        <span>Conferencistas</span>
+    	</a>
+    </li>
+    <li class="header"> TRANSACCIONES </li>
+    <li class="treeview" id="apoderado">
+      <a href="#" id="menu2">
+        <i class="fa fa-shopping-cart"></i>
+        <span>Webpay</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li id="menu22">
+          <a href="<?php echo PUBLIC_PATH ?>administrador/webpay/" id="lista">
+            <i class="fa fa-list" aria-hidden="true"></i>Compras
+          </a>
+        </li>
+      </ul>
+      <li class="">
+    	<a href="<?php echo PUBLIC_PATH ?>administrador/usuarios/" id="lista">
+    	  <i class="fa fa-user" aria-hidden="true"></i>
+        <span>Usuarios</span>
+    	</a>
+    </li>
+    <li class="">
+    <a href="<?php echo PUBLIC_PATH ?>administrador/colegios/" id="lista">
+      <i class="fa fa-building" aria-hidden="true"></i>
+      <span>Colegios</span>
+    </a>
+  </li>
+    </li>
+    <li class="header"> ESTADISTICAS </li>
+    <li class="" id="menu22">
+      <?php echo Html::link('administrador/estadisticas', '<i class="fa fa-signal" aria-hidden="true"></i><span>Principal</span>', 'id="lista"') ?>
+    </li>
+</ul>

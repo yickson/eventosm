@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <!-- SITE TITTLE -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EventoSM - Convivencia Escolar</title>
+  <!-- PLUGINS CSS STYLE -->
+  <!-- Bootstrap -->
+  <?php Tag::css('bootstrap.min') ?>
+  <?php Tag::css('font') ?>
+  <?php Tag::css('magnific-popup') ?>
+  <?php Tag::css('slick') ?>
+  <?php Tag::css('slick-theme') ?>
+  <?php Tag::css("selectize/css/selectize.default")?>
+  <?php Tag::css('style') ?>
+  <?php Tag::css('ketchup') ?>
+  <?php echo Html::includeCss() ?>
+  <!-- CUSTOM CSS -->
+  <?php echo Tag::js('jquery') ?>
+  <!-- FAVICON -->
+  <link href="../img/favicon_new.png" rel="shortcut icon">
+
+</head>
+
+<body class="body-wrapper">
+
+
+<?php View::partial('front/menu') ?>
+
+<?php View::content() ?>
+
+<?php View::partial('front/pie') ?>
+
+
+
+  <!-- JAVASCRIPTS -->
+
+  <!-- Popper js -->
+  <?php echo Tag::js('popper') ?>
+  <!-- Bootstrap 4 -->
+  <?php echo Tag::js('bootstrap4') ?>
+  <!-- Smooth Scroll -->
+  <?php echo Tag::js('SmoothScroll.min') ?>
+  <!-- Isotope -->
+  <?php echo Tag::js('mixitup.min') ?>
+  <!-- Magnific Popup -->
+  <?php echo Tag::js('jquery.magnific-popup.min') ?>
+  <!-- Slick Carousel -->
+  <?php echo Tag::js('slick.min') ?>
+  <!-- SyoTimer -->
+  <?php echo Tag::js('jquery.syotimer.min') ?>
+  <?php echo Tag::js('custom') ?>
+  <?php echo Tag::js('ketchup') ?>
+  <script src="https://unpkg.com/sweetalert2@7.0.9/dist/sweetalert2.all.js" charset="utf-8"></script>
+  <!-- Google Mapl -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOyTGsl-Tc2xOU64ZyKENj4wpDZgnN_1k"></script>
+  <?php echo Tag::js("administrador/usuarios/mapa")?>
+  <?php echo Tag::js('administrador/usuarios/loadmap') ?>
+  <!-- Custom Script -->
+
+</body>
+
+</html>

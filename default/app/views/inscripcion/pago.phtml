@@ -1,0 +1,79 @@
+<br>
+<section class="section schedule">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="section-title">
+					<h3>EventoSM <span class="alternate">Convivencia Escolar</span></h3>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th>Evento</th>
+                <th>Objetivo</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tr>
+              <th scope="row"><?php echo $conf->nombre ?></th>
+              <td>La finalidad de este Seminario es propiciar una instancia de reflexi�n en torno a la convivencia escolar.<?php //echo $conf->subtitulo ?></td>
+              <td class="text-center"><?php echo $datos['entradas'] ?></td> <!-- Cantidad de entradas -->
+              <?php if($conf->precio == 0): ?>
+                <td>Gratis</td>
+              <?php else: ?>
+                <td class="text-center"><?php echo '$'.number_format(($datos['entradas'] * $conf->precio), 0, '', '.') ?></td> <!-- Precio de boleto -->
+              <?php endif ?>
+            </tr>
+          </table>
+        </div>
+        <?php if($conf->precio == 0): ?>
+          <button type="button" name="button" class="btn btn-main-md solicitar">Solicitar entradas</button>
+        <?php else: ?>
+          <?php echo Html::link('inscripcion/pasarela', 'Pagar inscripción', 'class="btn btn-main-md"') ?>
+        <?php endif ?>
+			</div>
+
+		</div>
+	</div>
+</section>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.solicitar').click(function(){
+      $.ajax({
+        type: 'GET',
+        cache: false,
+        url: 'solicitar',
+        success: function(result){
+          console.log(result);
+          if(result === 1){
+            swal({
+                  type: 'success',
+                  title: 'Las entradas fueron enviadas al correo',
+                  text: 'Ya lo estamos redirigiendo...',
+                  timer: 2000,
+                  onOpen: () => {
+                    swal.showLoading()
+                  }
+                }).then((result) => {
+                  if (result.dismiss === 'timer') {
+                    window.location.href = "<?php echo PUBLIC_PATH.'inscripcion/detalle_gratis' ?>";
+                  }
+                });
+          }else{
+            swal(
+                  'Error al solicitar las entradas',
+                  'Vuelva a intentar más tarde',
+                  'error'
+                );
+          }
+        }
+      })
+    })
+  })
+</script>

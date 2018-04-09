@@ -1,0 +1,105 @@
+<table max-width="800" cellpadding="0" cellspacing="0" align="center">
+  <tr>
+    <td height="80" align="left" valign="middle" bgcolor="ffffff" style="font-family:Arial, Helvetica, sans-serif; color:#ffffff;">
+      <div style="font-size:15px;">
+        <b></b>
+      </div>
+      <div style="font-size:30px;">
+        <b><img src="http://serviciosm.cl/img/smlogomin2.jpg" width="80" height="80" style="display:block;"></b>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table width="650" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td width="650">
+            <h2 align="center">Orden solicitada</h2>
+            <p></p>
+          </td>
+        </tr>
+      </table>
+      </td>
+      <!-- 2 column layout with 10px spacing -->
+      </tr>
+      <tr>
+      <td>
+        <table width="650" cellpadding="0" cellspacing="0" align="center">
+          <tr>
+            <th width="325">
+              <h2>Metodo de pago</h2>
+            </th>
+            <th width="325">
+              <h2>Nombre del comprador</h2>
+            </th>
+          </tr>
+          <tr>
+            <td width="295" align="center">No Aplica</td>
+            <td width="295" align="center">
+              <p><b>'.$usuario->nombre.'</b></p>
+            </td>
+          </tr>
+        </table>
+      </td>
+      </tr>
+      <!-- 4 column layout with 0px spacing -->
+      <tr>
+        <td>
+          <br><br>
+        </td>
+      </tr>
+      <tr>
+      <td>
+          <table width="650" cellpadding="0" cellspacing="0" align="center" style="font-family:Arial, Helvetica, sans-serif, border-bottom: 1px solid #ddd, border-collapse: collapse; width: 100%;">
+          <!-- Aquí se encuentra el bucle del los pedidos -->
+          <tr>
+            <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Evento</th>
+            <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Orden de compra</th>
+            <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Cantidad de entradas</th>
+            <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Precio</th>
+          </tr>
+          <tr onmouseover="this.style.backgroundColor='#f5f5f5'" onmouseout="this.style.backgroundColor=''">
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">'.$conf->nombre.'</td>
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">'.$compra->numero_compra.'</td>
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">'.$usuario->cantidad.'</td>
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">'.$compra->monto.'</td>
+          </tr>
+          <tr onmouseover="this.style.backgroundColor='#f5f5f5'" onmouseout="this.style.backgroundColor=''">
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">'.$conf->nombre.'</td>
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">'.$compra->numero_compra.'</td>
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">'.$usuario->cantidad.'</td>
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">'.$compra->monto.'</td>
+          </tr>
+          <tr onmouseover="this.style.backgroundColor='#f5f5f5'" onmouseout="this.style.backgroundColor=''">
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">'.$conf->nombre.'</td>
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">'.$compra->numero_compra.'</td>
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">'.$usuario->cantidad.'</td>
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">'.$compra->monto.'</td>
+          </tr>
+          </table>
+      </td>
+      </tr>
+      <tr>
+        <td>
+          <br><br>
+        </td>
+      </tr>
+      <tr>
+      <td>
+        <table width="650" cellpadding="0" cellspacing="0" align="center">
+          <tr>
+            <td width="650">
+              <p>¿Tiene alguna duda?
+              Este email contiene información personal --- Por favor, no lo reenvíe. Si tiene alguna llámenos al 600 381 13 12.
+
+              Llámenos al 600 381 13 12.
+
+              Ediciones SM Chile S.A. Coyancura 2283, Oficina 203, Providencia, Santiago.
+
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+  </tr>
+</table>

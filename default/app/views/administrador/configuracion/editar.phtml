@@ -1,0 +1,99 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOyTGsl-Tc2xOU64ZyKENj4wpDZgnN_1k"></script>
+<?php echo Tag::js("administrador/usuarios/mapa")?>
+<?php echo Tag::js('administrador/usuarios/loadmap') ?>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <div class="box box-success">
+      <div class="box-header">
+        <i class="fa fa-users hidden"></i>
+        <h3 class="box-title">Editar Configuración general </h3>
+        <br><p>
+        <button  class="btn btn-success editar">
+          <i class="fa fa-cog pull-left"> Volver a página inicial de configuraciones </i>
+        </button>
+      </div>
+      <div class="box-body">
+        <hr>
+        <div class="form-group">
+            <label>Nombre del evento</label>
+            <input id="evento" type="text" class="form-control" value="<?php echo $evento->nombre ?>">
+            <label>SubTítulo</label>
+            <input id="subtitulo" type="text" class="form-control" value="<?php echo $evento->subtitulo ?>">
+            <label>Precio</label>
+            <input id="precio" type="text" class="form-control" value="<?php echo $evento->precio ?>">
+            <label>Cupos</label>
+            <input id="cupos" type="text" class="form-control" value="<?php echo $evento->cupos ?>">
+            <label>Fecha</label>
+            <input id="fecha" type="date" class="form-control" value="<?php echo $evento->fecha ?>">
+            <label>Hora de inicio</label>
+            <input id="hora_inicial" type="time" class="form-control" value="<?php echo $evento->hora_inicio ?>">
+            <label>Hora de finalización</label>
+            <input id="hora_final" type="time" class="form-control" value="<?php echo $evento->hora_final ?>">
+            <label>Lugar del evento</label>
+            <input id="lugar" type="text" class="form-control" value="<?php echo $evento->lugar ?>">
+	    <label>Coordenadas</label>
+	    <input id="latitud" value="<?php echo $evento->latitud ?>" class="hidden">
+	    <input id="longitud" value="<?php echo $evento->longitud ?>" class="hidden">
+            <div id="map" data-drag="true" data-time="2000"></div>
+	    <div id="loadmap" class="hidden" style="    position: absolute; z-index: 1; margin: -33% 0% 0% 40%;">
+		<img src="../../img/load.gif"></div>
+	    </div>
+            <label>Objetivo</label>
+            <textarea id="objetivo" rows="8" cols="80" class="form-control"><?php echo $evento->objetivo ?></textarea>
+            <br>
+            <button id="editar" class="btn btn-success">Editar configuración</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#editar").click(function(){
+      var nombre = $("#evento").val();
+      var subtitulo = $("#subtitulo").val();
+      var precio = $("#precio").val();
+      var cupos = $("#cupos").val();
+      var fecha = $("#fecha").val();
+      var hora_in = $("#hora_inicial").val();
+      var hora_fi = $("#hora_final").val();
+      var lugar = $("#lugar").val();
+      var latitud = $("#latitud").val();
+      var longitud = $("#longitud").val();
+      var objetivo = $("#objetivo").val();
+      console.log(precio);
+      $.ajax({
+        type: 'POST',
+        cache: false,
+        url: 'editar_configuracion',
+        data: {"nombre":nombre, "subtitulo":subtitulo, "precio":precio, "cupos":cupos, "fecha":fecha, "hora_in":hora_in, "hora_fi":hora_fi, "lugar":lugar, "latitud" : latitud, "longitud":longitud,  "objetivo":objetivo},
+        success: function(result){
+          if(result === 1){
+            swal({
+                  type: 'success',
+                  title: 'Edición correcta',
+                  text: 'Ya lo estamos redirigiendo...',
+                  timer: 3000,
+                  onOpen: () => {
+                    swal.showLoading()
+                  }
+                }).then((result) => {
+                  if (result.dismiss === 'timer') {
+                    window.location.href = "<?php echo PUBLIC_PATH.'administrador/configuracion/' ?>";
+                  }
+                });
+          }else{
+            swal(
+                  'Error al editar',
+                  'No se pudieron editar los datos, vuelva a intentar',
+                  'error'
+                );
+          }
+        }
+      });
+    });
+  })
+</script>
+

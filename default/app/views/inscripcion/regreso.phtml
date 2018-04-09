@@ -1,0 +1,36 @@
+<br>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <div class="card text-white bg-info mb-3">
+        <div class="card-body">
+          <h4 class="card-title">Pago exitoso</h4>
+          <p>Tu pago ha sido exitoso, una vez te llegue el correo de confirmación, tu compra ya ha sido validada.</p>
+        </div>
+    </div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+    var pago = '<?php echo $idpago ?>';
+    var resp;
+		setTimeout(function(){
+      $.ajax({
+				type: 'GET',
+				cache: false,
+				url: 'https://localhost/evento/inscripcion/notificacion',
+				success: function(result){
+          resp = JSON.parse(result);
+				    console.log(result.status);
+					if(resp.status === 'done'){
+						console.log('Aceptado');
+            window.location.href = 'http://localhost/evento/inscripcion/detalle_khipu';
+					}else{
+						console.log('En pendiente');
+					}
+				}
+			});
+    }, 5000)
+	});
+</script>

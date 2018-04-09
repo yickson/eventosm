@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-danger">
+      <div class="box-header">
+        <i class="fa fa-building hidden"></i>
+        <h3 class="box-title"> Crear colegio </h3>
+        <div class="box-body">
+          <form id="crear_colegio" >
+            <h4>RBD</h4>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user" style="color:red"></i></span>
+              <input id="rbd" type="text" class="form-control" placeholder="Ingrese RBD del colegio">
+            </div>
+            <br>
+            <h4>Nombre</h4>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope" style="color:red"></i></span>
+              <input id="nombre" type="text" class="form-control" placeholder="Ingrese nombre del colegio">
+            </div>
+            <br>
+            <br>
+          </form>
+          <button  class="btn btn-success guardar pull-right"  />Crear</button>
+          <span class=" ml-1 pull-right"> &nbsp; &nbsp; </span>
+          <?php echo Html::link('administrador/colegios/', 'Volver', 'class="btn btn-default pull-right"') ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(".guardar").click(function(){
+  var nombre = $("#nombre").val();
+  var rbd = $("#rbd").val();
+  $.ajax({
+    type: "POST",
+    cache: false,
+    url: "crear_colegio",
+    data: {"nombre":nombre, "rbd":rbd },
+    success: function(result){
+      if(result === 1){
+        swal({
+           title: "Colegio creado correctamente!",
+           text: "En breves momentos serás redireccionado",
+           type: "success",
+           timer: 2500,
+           onOpen: () => {
+             swal.showLoading()
+           }
+         }).then((result) => {
+           if (result.dismiss === 'timer') {
+             window.location.href = "<?php echo PUBLIC_PATH.'administrador/colegios/' ?>";
+           }
+         });
+      }else{
+        swal(
+              'Error al crear',
+              'No se pudieron crear los datos del colegio, vuelva a intentar',
+              'error'
+            );
+      }
+    }
+  })
+});
+</script>

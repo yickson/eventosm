@@ -1,0 +1,25 @@
+
+  <?php Tag::css('sorteo/style') ?>
+  <?php Tag::css('sorteo/raffle') ?>
+  <?php echo Html::includeCss() ?>
+
+  <?php echo Tag::js('sorteo/jquery-1.8.0.min') ?>
+  <?php echo Tag::js('sorteo/jquery-ui-1.8.23.custom.min') ?>
+  <?php echo Tag::js('sorteo/names') ?>
+  <?php echo Tag::js('sorteo/raffle') ?>
+<br>
+	<div class="header">
+		<span>Participantes:<b id="participant-number"></b></span>
+    <button name="button">Reiniciar Sorteo</button>
+	</div>
+	<div class='enter-names'>
+		<label>Nombres</label>
+		<textarea class='name-text-field form-control'>
+  <?php foreach($usuarios as $key => $valor): ?>
+<?php echo $valor->nombre.' - '.$valor->telefono."\n" ?>
+  <?php endforeach ?>
+    </textarea>
+		<button class="btn btn-main-md" onclick="process();">Iniciar sorteo</button>
+	</div>
+</body>
+</html>
